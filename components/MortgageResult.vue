@@ -10,34 +10,26 @@
         <div class="text-right">{{ formatter.format(trueLoanAmount) }}</div>
       </div>
     </div>
-    <div class="mb-5">
-      <div>
-        <div class="grid grid-cols-[100px_1fr_1fr_1fr] text-left divide-y-0">
-          <div class="py-2 font-bold divide-y-0">Month</div>
-          <div class="py-2 font-bold divide-y-0">Interest on Loan</div>
-          <div class="py-2 font-bold divide-y-0">Amount Repaid</div>
-          <div class="py-2 font-bold text-right divide-y-0">Balance at Period End</div>
-        </div>
-        <div class="grid grid-cols-[100px_1fr_1fr_1fr] divide-y text-left">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div class="py-2 text-right">{{ formatter.format(trueLoanAmount) }}</div>
-          <template v-for="month, idx in numberOfPeriods">
-            <div class="py-2">{{ monthByMonthGrid[idx].month }}</div>
-            <div class="py-2">{{ formatter.format(monthByMonthGrid[idx].interestOnLoan) }}</div>
-            <div class="py-2">{{ formatter.format(monthByMonthGrid[idx].amountRepaid) }}</div>
-            <div class="py-2 text-right">{{ formatter.format(monthByMonthGrid[idx].balanceAtPeriodEnd) }}</div>
-          </template>
-        </div>
-      </div>
-    </div>
+    <UTable :columns="columns" :rows="monthByMonthGrid" class="text-base">
+      <template #month-data="{ row }">
+        <div class="text-base">{{ row.month }}</div>
+      </template>
+      <template #interestOnLoan-data="{ row }">
+        <div class="text-base">{{ formatter.format(row.interestOnLoan) }}</div>
+      </template>
+      <template #amountRepaid-data="{ row }">
+        <div class="text-base">{{ formatter.format(row.amountRepaid) }}</div>
+      </template>
+      <template #balanceAtPeriodEnd-data="{ row }">
+        <div class='text-base text-right'>{{ formatter.format(row.balanceAtPeriodEnd) }}</div>
+      </template>
+    </UTable>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { Mortgage } from '~/types/types';
-type monthByMonthGrid = {
+type MonthByMonthGrid = {
   month: number
   interestOnLoan: number
   amountRepaid: number
@@ -58,7 +50,7 @@ const percentageFormatter = new Intl.NumberFormat('en-UK', {
 
 const { monthlyRate, trueLoanAmount, numberOfPeriods } = useCalculations(props.mortgage)
 
-const monthByMonthGrid = ref<monthByMonthGrid[]>([])
+const monthByMonthGrid = ref<MonthByMonthGrid[]>([])
 
 const handleCalculationsForMonth = (month: number) => {
   if (month === 1) {
@@ -77,6 +69,22 @@ const handleCalculationsForMonth = (month: number) => {
     })
   }
 }
+
+const columns = [{
+  key: 'month',
+  label: 'Month'
+}, {
+  key: 'interestOnLoan',
+  label: 'Interest on Loan'
+}, {
+  key: 'amountRepaid',
+  label: 'Amount Repaid'
+}, {
+  key: 'balanceAtPeriodEnd',
+  label: 'Balance at Period End',
+  class: 'text-right',
+}]
+
 
 for (let i = 1; i <= numberOfPeriods.value; i++) {
   handleCalculationsForMonth(i)
