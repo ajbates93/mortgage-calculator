@@ -7,12 +7,11 @@
           <h1 class="font-bold mb-5 text-5xl text-green-600">Mortgage Calculator</h1>
           <p class="text-xl">A small, helpful tool to help you compare multiple mortgage offer options.</p>
         </div>
-        <span @click="isDark = !isDark" class="md:static absolute top-2 right-2 cursor-pointer">
+        <span @click="isDark = !isDark" class="absolute top-2 right-2 cursor-pointer">
           <UIcon 
           dynamic :name="`i-heroicons-${isDark ? 'sun' : 'moon'}`" 
           fallback="i-heroicons-sun" 
-          class="text-4xl ml-auto cursor-pointer" 
-          :class="isDark ? 'text-yellow-300' : 'text-gray-600'"
+          class="text-4xl ml-auto cursor-pointer dark:text-yellow-300 text-gray-600" 
           />
         </span>
       </div>
