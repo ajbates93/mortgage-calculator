@@ -32,10 +32,7 @@ const { id, title } = defineProps<{
   id: number, title: string
 }>()
 
-const emit = defineEmits<{
-  (e: 'update', mortgage: Mortgage): void
-}>()
-
+const mortgages = useMortgages()
 const mortgage = ref<Mortgage>({
   id: id,
   interestRate: 0,
@@ -44,11 +41,35 @@ const mortgage = ref<Mortgage>({
   monthlyPayments: 0
 })
 
-const onMortgageUpdate = () => {
-  emit('update', mortgage.value)
+const handleUpdateMortgage = (mortgage: Mortgage) => {
+  const index = mortgages.value.findIndex(m => m.id === mortgage.id)
+  if (index === -1) {
+    mortgages.value.push(mortgage)
+  } else {
+    mortgages.value[index] = mortgage
+  }
 }
 
-watch(mortgage, onMortgageUpdate, { deep: true })
+const handleClearMortgage = () => {
+  console.log('ehhl')
+  mortgage.value = {
+    id: id,
+    interestRate: 0,
+    additionalFees: 0,
+    mortgageLength: 0,
+    monthlyPayments: 0
+  }
+}
+
+watch(mortgage, handleUpdateMortgage, { deep: true })
+
+onMounted(() => {
+  window.addEventListener('clear-all', handleClearMortgage)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('clear-all', handleClearMortgage)
+})
 
 </script>
 
