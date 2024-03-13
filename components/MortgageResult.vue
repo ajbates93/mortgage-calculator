@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="font-bold text-2xl mb-5 text-green-600 flex justify-between items-center pb-5 border-b">
-      <span>
+    <div class="font-bold text-2xl mb-5 text-green-600 flex justify-between flex-wrap items-center pb-5 border-b">
+      <span class="mb-3 md:mb-0">
         Mortgage Option {{ mortgage.id }}
       </span>
       <span class="text-lg">
@@ -9,18 +9,18 @@
         <span>{{ formatter.format(mortgage.monthlyPayments) }}</span>
       </span>
     </div>
-    <div class="flex items-center md:justify-between mb-5">
+    <div class="flex items-center flex-wrap md:justify-between mb-5">
       <div class="text-left">
         <div class="mb-3">
           <div class="font-bold mb-1 text-gray-500 dark:text-gray-300">Monthly Rate: <span class="text-green-600">{{ percentageFormatter.format(monthlyRate) }}</span></div>
           <div class="text-gray-400 dark:text-gray-200">This is your interest rate split over 12 months</div>
         </div>
-        <div class="">
+        <div class="mb-3 md:mb-0">
           <div class="font-bold mb-1 text-gray-500 dark:text-gray-300">Total loan amount: <span class="text-green-600">{{ formatter.format(trueLoanAmount) }}</span></div>
           <div class="text-gray-400 dark:text-gray-200">Your outstanding balance (inc. any additional fees)</div>
         </div>
       </div>
-      <div class="text-right">
+      <div class="md:text-right">
         <div class="mb-3">
           <div class="font-bold mb-1 text-gray-500 dark:text-gray-300">Average Annual Cost: <span class="text-green-600">{{ formatter.format(cumulativeInterest / (numberOfPeriods / 12)) }}</span></div>
           <div class="text-gray-400 dark:text-gray-200">The amount of interest paid over the mortgage term.</div>
