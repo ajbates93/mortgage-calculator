@@ -5,33 +5,33 @@
         Mortgage Option {{ mortgage.id }}
       </span>
       <span class="text-lg">
-        <span class="mr-1 text-gray-500">Cost per month:</span> 
+        <span class="mr-1 text-gray-500 dark:text-gray-300">Cost per month:</span> 
         <span>{{ formatter.format(mortgage.monthlyPayments) }}</span>
       </span>
     </div>
     <div class="flex items-center md:justify-between mb-5">
       <div class="text-left">
         <div class="mb-3">
-          <div class="font-bold mb-1 text-gray-500">Monthly Rate: <span class="text-green-600">{{ percentageFormatter.format(monthlyRate) }}</span></div>
-          <div class="text-gray-400">This is your interest rate split over 12 months</div>
+          <div class="font-bold mb-1 text-gray-500 dark:text-gray-300">Monthly Rate: <span class="text-green-600">{{ percentageFormatter.format(monthlyRate) }}</span></div>
+          <div class="text-gray-400 dark:text-gray-200">This is your interest rate split over 12 months</div>
         </div>
         <div class="">
-          <div class="font-bold mb-1 text-gray-500">Total loan amount: <span class="text-green-600">{{ formatter.format(trueLoanAmount) }}</span></div>
-          <div class="text-gray-400">Your outstanding balance (inc. any additional fees)</div>
+          <div class="font-bold mb-1 text-gray-500 dark:text-gray-300">Total loan amount: <span class="text-green-600">{{ formatter.format(trueLoanAmount) }}</span></div>
+          <div class="text-gray-400 dark:text-gray-200">Your outstanding balance (inc. any additional fees)</div>
         </div>
       </div>
       <div class="text-right">
         <div class="mb-3">
-          <div class="font-bold mb-1 text-gray-500">Average Annual Cost: <span class="text-green-600">{{ formatter.format(cumulativeInterest / (numberOfPeriods / 12)) }}</span></div>
-          <div class="text-gray-400">The amount of interest paid over the mortgage term.</div>
+          <div class="font-bold mb-1 text-gray-500 dark:text-gray-300">Average Annual Cost: <span class="text-green-600">{{ formatter.format(cumulativeInterest / (numberOfPeriods / 12)) }}</span></div>
+          <div class="text-gray-400 dark:text-gray-200">The amount of interest paid over the mortgage term.</div>
         </div>
         <div class="">
-          <div class="font-bold mb-1 text-gray-500">Average Annual Repayment: <span class="text-green-600">{{ formatter.format(cumulativeRepayment / (numberOfPeriods / 12)) }}</span></div>
-          <div class="text-gray-400">The amount of capital paid off over the mortgage term.</div>
+          <div class="font-bold mb-1 text-gray-500 dark:text-gray-300">Average Annual Repayment: <span class="text-green-600">{{ formatter.format(cumulativeRepayment / (numberOfPeriods / 12)) }}</span></div>
+          <div class="text-gray-400 dark:text-gray-200">The amount of capital paid off over the mortgage term.</div>
         </div>
       </div>
     </div>
-    <div @click="showMonthByMonthBreakdown = !showMonthByMonthBreakdown" class="bg-gray-100 border border-green-600 border-opacity-30 text-green-600 font-semibold flex items-center justify-between px-5 py-3 rounded-lg cursor-pointer text-lg">
+    <div @click="showMonthByMonthBreakdown = !showMonthByMonthBreakdown" class="bg-gray-100 dark:bg-[#3b3b3b] border border-green-600 border-opacity-30 text-green-600 font-semibold flex items-center justify-between px-5 py-3 rounded-lg cursor-pointer text-lg">
       <span class="flex items-center gap-3">
         View Monthly Breakdown
       </span>
