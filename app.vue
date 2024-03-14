@@ -1,4 +1,5 @@
 <template>
+  <SpeedInsights />
   <div class="bg-gray-50 dark:bg-[#3b3b3b] min-h-dvh md:py-20 p-10">
     <div class="container mx-auto">
       <div class="title flex mb-10">
@@ -48,6 +49,9 @@
 
 <script lang="ts" setup>
 import { useOutstandingBalance, useMortgages } from './composables/states';
+// SEO 
+import { SpeedInsights } from '@vercel/speed-insights/nuxt'
+// END SEO
 
 const colorMode = useColorMode()
 const isDark = computed({
