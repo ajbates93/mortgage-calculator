@@ -1,6 +1,6 @@
 <template>
   <SpeedInsights />
-  <div class="bg-gray-50 dark:bg-[#3b3b3b] min-h-dvh md:py-20 p-10">
+  <div class="bg-gray-50 dark:bg-[#3b3b3b] min-h-dvh md:py-20 md:px-10 p-5">
     <div class="container mx-auto">
       <div class="title flex mb-10">
         <UIcon name="i-heroicons-home" class="hidden md:block text-green-600 text-5xl md:text-8xl mr-5" />
@@ -16,7 +16,7 @@
           />
         </span>
       </div>
-      <div class="requirements mb-10 rounded-lg border border-green-600 border-opacity-30 p-10 bg-white dark:bg-[#2b2b2b]">
+      <div class="requirements mb-10 rounded-lg border border-green-600 border-opacity-30 p-5 md:p-10 bg-white dark:bg-[#2b2b2b]">
         <h2 class="font-bold mb-5 text-3xl text-green-600">Your options</h2>
         <p class="mb-10">Compare your different mortgage options. Let's start by getting some general information.</p>
         <h3 class="font-bold mb-5 text-2xl text-green-600">General Information</h3>
@@ -38,7 +38,7 @@
       <template v-if="showResults && mortgages.length > 0">
         <h2 class="font-bold mb-5 text-3xl text-green-600">Your results</h2>
         <template v-for="mortgage in mortgages">
-          <div class="results mb-10 rounded-lg border border-green-600 border-opacity-30 p-10 bg-white dark:bg-[#2b2b2b]">
+          <div class="results mb-10 rounded-lg border border-green-600 border-opacity-30 p-5 md:p-10 bg-white dark:bg-[#2b2b2b]">
             <MortgageResult :mortgage="mortgage" />
           </div>
         </template>
