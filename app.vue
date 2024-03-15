@@ -45,7 +45,7 @@
       </template>
     </div>
   </div>
-  <footer class="py-5 bg-white dark:bg-[#2b2b2b] flex items-center text-center dark:text-gray-200">
+  <footer class="py-5 bg-white dark:bg-[#2b2b2b] flex items-center text-center dark:text-gray-200 border-t border-green-600 border-opacity-30">
     <div class="container mx-auto">
       <div>
         &copy; Alex Bates 2024
